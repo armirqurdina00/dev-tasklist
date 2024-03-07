@@ -11,3 +11,9 @@ body {
 :root {
   --primary-color: #06b6d4;
 }
+
+input, button {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+}
