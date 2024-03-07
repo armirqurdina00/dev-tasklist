@@ -1,3 +1,6 @@
+import BookingList from "./components/BookingList";
+import { BookingInterface } from "./interfaces/BookingInterface"
+
 async function getBookings() {
   const res = await fetch('http://host.docker.internal:5000/api/bookings', { cache: 'no-store', mode: 'no-cors' })
  
@@ -10,13 +13,15 @@ async function getBookings() {
 
 const Home: React.FC = async () => {
 
-  const bookings = await getBookings()
+  const bookings:BookingInterface[] = await getBookings()
 
   return (
     <div>
-      <h1>Current booking count: {bookings.length}</h1>
-
+      <div className="text-center my-6">
+        <h1 className="text-lg my-6 font-bold text-primary-color">Current booking count: {bookings.length}</h1>
+        <BookingList bookings={bookings} />
     </div>
+    </div >
   );
 };
 
